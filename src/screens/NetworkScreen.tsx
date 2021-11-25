@@ -9,6 +9,7 @@ import {ScreenProps} from '../types/Application.d';
 
 import ButtonRoundedWithCaption from '../components/Buttons/ButtonRoundedWithCaption';
 import Theme from '../Constants/AppConstant';
+import AppConstant from '../Constants/AppConstant';
 
 export default class NetworkControlScreen extends React.Component<ScreenProps> {
   animatedScaleValue: Animated.Value | Animated.ValueXY;
@@ -143,25 +144,18 @@ export default class NetworkControlScreen extends React.Component<ScreenProps> {
       ],
       opacity: this.animatedContainerOpacityValue,
     };
-    const backgroundAnimation = {
-      opacity: this.animatedBackgroundOpacityValue,
-    };
 
     return (
       <TouchableWithoutFeedback onPress={this.onDismiss}>
         <View style={styles.wrapper}>
           <Animated.Image
-            style={[styles.backgroundImage, backgroundAnimation]}
+            style={[styles.backgroundImage]}
             blurRadius={10}
             source={require('../assets/images/backgroundImage2.jpeg')}
           />
           <TouchableWithoutFeedback>
             <Animated.View style={[styles.container, animatedStyle]}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}>
+              <View style={styles.row}>
                 <ButtonRoundedWithCaption
                   icon={'plane'}
                   text={'Plane mode'}
@@ -170,7 +164,7 @@ export default class NetworkControlScreen extends React.Component<ScreenProps> {
                   }
                 />
                 <ButtonRoundedWithCaption
-                  icon={'broadcast-tower'}
+                  icon={'signal'}
                   text={'Mobile network'}
                   colorEnabledButton={
                     Theme.Colors.buttons.custom.rounded.mobileData
@@ -179,7 +173,7 @@ export default class NetworkControlScreen extends React.Component<ScreenProps> {
                   initiallyEnabled
                 />
               </View>
-              <Row>
+              <View style={styles.row}>
                 <ButtonRoundedWithCaption
                   icon={'wifi'}
                   text={'Wi-Fi'}
@@ -207,8 +201,15 @@ export default class NetworkControlScreen extends React.Component<ScreenProps> {
                   }
                   initiallyEnabled
                 />
-              </Row>
-              <Row style={{justifyContent: 'space-between'}}>
+              </View>
+              <View
+                style={[
+                  styles.row,
+                  {
+                    justifyContent:
+                      AppConstant.JustifyContentBetween.justifyContent,
+                  },
+                ]}>
                 <ButtonRoundedWithCaption
                   icon={'retweet'}
                   text={'AirDrop'}
@@ -222,7 +223,7 @@ export default class NetworkControlScreen extends React.Component<ScreenProps> {
                   }
                 />
                 <ButtonRoundedWithCaption
-                  icon={'creative-commons-share'}
+                  icon={'share'}
                   text={'HotSpot'}
                   iconSize={Theme.Sizes.icon.custom.bluetooth}
                   colorDisabledButton={
@@ -234,7 +235,7 @@ export default class NetworkControlScreen extends React.Component<ScreenProps> {
                       .disabledIcon
                   }
                 />
-              </Row>
+              </View>
             </Animated.View>
           </TouchableWithoutFeedback>
         </View>
@@ -255,6 +256,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   container: {
     alignItems: 'center',

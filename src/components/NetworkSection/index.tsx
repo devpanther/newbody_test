@@ -10,8 +10,8 @@ import NetworkButtons from './NetworkButtons';
 
 const NetworkSection: React.FC<{
   externalStyles: any;
-  onLongPressNetworkControlSection: any;
-}> = ({externalStyles, onLongPressNetworkControlSection}) => {
+  onPress: any;
+}> = ({externalStyles, onPress}) => {
   let animatedScale = new Animated.Value(
     AppConstant.Animations.sections.default.initialValue,
   );
@@ -45,19 +45,19 @@ const NetworkSection: React.FC<{
               title="Wi-Fi"
               subtitle="Not Connected"
               icon="wifi"
-              onLongPress={onLongPressNetworkControlSection}
+              onPress={onPress}
             />
             <NetworkButtons
               title="Bluetooth"
               subtitle="Off"
               icon="bluetooth"
-              onLongPress={onLongPressNetworkControlSection}
+              onPress={onPress}
             />
             <NetworkButtons
               title="Airdrop"
               subtitle="Not Connected"
               icon="tint"
-              onLongPress={onLongPressNetworkControlSection}
+              onPress={onPress}
             />
           </View>
         </View>

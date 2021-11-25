@@ -20,7 +20,7 @@ const Home: React.FC<ScreenProps> = props => {
     const layout = event.nativeEvent.layout;
 
     let yDistance =
-      Dimensions.get('screen').height / 2 - (layout.height / 2 + layout.y);
+      Dimensions.get('screen').height / 3 - (layout.height / 2 + layout.y);
     yDistance = StatusBar.currentHeight
       ? yDistance - StatusBar.currentHeight
       : yDistance;
@@ -43,7 +43,7 @@ const Home: React.FC<ScreenProps> = props => {
       -xDistance;
   };
 
-  const onLongPressNetworkControlSection = () => {
+  const onPressNetworkControlSection = () => {
     const {Application, componentId} = props;
     Application.navigateNetworkControl(componentId);
   };
@@ -59,7 +59,7 @@ const Home: React.FC<ScreenProps> = props => {
           onLayout={animationsCosntants}>
           <NetworkSection
             externalStyles={styles.flex}
-            onLongPressNetworkControlSection={onLongPressNetworkControlSection}
+            onPress={onPressNetworkControlSection}
           />
           <FocusSection externalStyles={styles.flex} />
         </View>
@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
   wrapperStyle: {
     padding: 20, // TODO: make it responsible, depends on width
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    marginTop: 40,
   },
   flex: {
     flex: 1,

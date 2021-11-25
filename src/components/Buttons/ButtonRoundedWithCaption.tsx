@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Theme from '../../Constants/AppConstant';
 

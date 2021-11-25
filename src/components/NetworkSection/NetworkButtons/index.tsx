@@ -15,8 +15,8 @@ const NetworkButtons: React.FC<{
   title: string;
   subtitle: string;
   icon: string;
-  onLongPress: any;
-}> = ({title, subtitle, icon, onLongPress}) => {
+  onPress: any;
+}> = ({title, subtitle, icon, onPress}) => {
   const [focused, setFocused] = React.useState(false);
   const [iconClicked, setClicked] = React.useState(false);
 
@@ -44,7 +44,7 @@ const NetworkButtons: React.FC<{
   return (
     <TouchableWithoutFeedback
       onPressIn={() => setFocused(true)}
-      onLongPress={onLongPress}
+      onPress={onPress}
       onPressOut={() => setFocused(false)}>
       <View style={styles.row}>
         <Pressable
