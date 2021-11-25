@@ -8,11 +8,12 @@ import {
 } from 'react-native';
 import React from 'react';
 import Constants from '../Constants/AppConstant';
-import MirroringSection from '../components/MirroringSection';
+import AppConstant from '../Constants/AppConstant';
+import FocusSection from '../components/FocusSection';
+import NetworkSection from '../components/NetworkSection';
+import {ScreenProps} from '../types/Application';
 
-const Home: React.FC<{
-  title: string;
-}> = () => {
+const Home: React.FC<ScreenProps> = props => {
   //const isDarkMode = useColorScheme() === 'dark';
 
   const animationsCosntants = (event: any) => {
@@ -41,15 +42,26 @@ const Home: React.FC<{
     Constants.Animations.screens.networkControl.initial.translateXValue =
       -xDistance;
   };
+
+  const onLongPressNetworkControlSection = () => {
+    const {Application, componentId} = props;
+    Application.navigateNetworkControl(componentId);
+  };
+
   return (
     <ImageBackground
       style={styles.backgroundImage}
       blurRadius={10}
       source={require('../assets/images/backgroundImage2.jpeg')}>
       <View style={styles.wrapperStyle}>
-        <View style={styles.row} onLayout={animationsCosntants}>
-          <MirroringSection externalStyles={styles.flex} />
-          <MirroringSection externalStyles={styles.flex} />
+        <View
+          style={[styles.row, styles.background]}
+          onLayout={animationsCosntants}>
+          <NetworkSection
+            externalStyles={styles.flex}
+            onLongPressNetworkControlSection={onLongPressNetworkControlSection}
+          />
+          <FocusSection externalStyles={styles.flex} />
         </View>
       </View>
     </ImageBackground>
@@ -71,6 +83,10 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  background: {
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    borderRadius: AppConstant.Borders.radius,
   },
 });
 

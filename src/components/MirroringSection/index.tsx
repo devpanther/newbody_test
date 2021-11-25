@@ -5,9 +5,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
-Icon.loadFont();
 import AppConstant from '../../Constants/AppConstant';
+import NetworkButtons from './NetworkButtons';
 
 const MirroringSection: React.FC<{
   externalStyles: any;
@@ -39,11 +38,20 @@ const MirroringSection: React.FC<{
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}>
       <Animated.View style={[styles.container, externalStyles, animatedStyle]}>
-        <View style={styles.flex} />
         <View style={styles.controls}>
-          <Icon style={[styles.icon, styles.wards]} name={'backward'} />
-          <Icon style={[styles.icon, styles.play]} name={'play'} />
-          <Icon style={[styles.icon, styles.wards]} name={'forward'} />
+          <View>
+            <NetworkButtons
+              title="Wi-Fi"
+              subtitle="Not Connected"
+              icon="wifi"
+            />
+            <NetworkButtons title="Bluetooth" subtitle="Off" icon="bluetooth" />
+            <NetworkButtons
+              title="Airdrop"
+              subtitle="Not Connected"
+              icon="tint"
+            />
+          </View>
         </View>
       </Animated.View>
     </TouchableWithoutFeedback>
@@ -52,30 +60,19 @@ const MirroringSection: React.FC<{
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: AppConstant.AlignItemsCenter.alignItems,
+    justifyContent: AppConstant.JustifyContentCenter.justifyContent,
     aspectRatio: 1,
     flex: 1,
     margin: AppConstant.Indents.sm,
     padding: AppConstant.Indents.sm,
-    backgroundColor: AppConstant.Colors.sections.default.background,
+    backgroundColor: 'rgba(255,255,255,0.3)',
     borderRadius: AppConstant.Borders.radius,
   },
   flex: {flex: 1},
   controls: {
-    justifyContent: 'space-around',
-    display: 'flex',
-  },
-  icon: {
-    margin: AppConstant.Indents.md,
-  },
-  play: {
-    color: AppConstant.Colors.sections.musicControl.icons.play,
-    fontSize: AppConstant.Sizes.icon.musicControlSection.play,
-  },
-  wards: {
-    color: AppConstant.Colors.sections.musicControl.icons.wards,
-    fontSize: AppConstant.Sizes.icon.musicControlSection.wards,
+    justifyContent: AppConstant.JustifyContentAround.justifyContent,
+    display: AppConstant.Row.display,
   },
 });
 

@@ -3,6 +3,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <ReactNativeNavigation/ReactNativeNavigation.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -31,22 +32,24 @@ static void InitializeFlipper(UIApplication *application) {
   InitializeFlipper(application);
 #endif
 
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
-                                                   moduleName:@"newbody_test"
-                                            initialProperties:nil];
+  [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
 
-  if (@available(iOS 13.0, *)) {
-      rootView.backgroundColor = [UIColor systemBackgroundColor];
-  } else {
-      rootView.backgroundColor = [UIColor whiteColor];
-  }
+  // RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  // RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+  //                                                  moduleName:@"newbody_test"
+  //                                           initialProperties:nil];
 
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = rootView;
-  self.window.rootViewController = rootViewController;
-  [self.window makeKeyAndVisible];
+  // if (@available(iOS 13.0, *)) {
+  //     rootView.backgroundColor = [UIColor systemBackgroundColor];
+  // } else {
+  //     rootView.backgroundColor = [UIColor whiteColor];
+  // }
+
+  // self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  // UIViewController *rootViewController = [UIViewController new];
+  // rootViewController.view = rootView;
+  // self.window.rootViewController = rootViewController;
+  // [self.window makeKeyAndVisible];
   return YES;
 }
 
@@ -57,6 +60,10 @@ static void InitializeFlipper(UIApplication *application) {
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+- (NSArray<id<RCTBridgeModule>> *)extraModulesForBridge:(RCTBridge *)bridge {
+  return [ReactNativeNavigation extraModulesForBridge:bridge];
 }
 
 @end

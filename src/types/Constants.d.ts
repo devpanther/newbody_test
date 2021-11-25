@@ -1,4 +1,4 @@
-import {ImageSourcePropType} from 'react-native';
+import {ColorValue, FlexAlignType, ImageSourcePropType} from 'react-native';
 
 export interface TypeConstants {
   Fonts: {
@@ -17,6 +17,30 @@ export interface TypeConstants {
       sliderControlIcon: number;
       buttonRoundedWithCaptionMargin: number;
     };
+  };
+
+  Row: {
+    display: 'flex';
+  };
+
+  JustifyContentCenter: {
+    justifyContent: 'center';
+  };
+
+  JustifyContentBetween: {
+    justifyContent: 'space-between';
+  };
+
+  JustifyContentAround: {
+    justifyContent: 'space-around';
+  };
+
+  AlignItemsCenter: {
+    alignItems: FlexAlignType;
+  };
+
+  AlignItemsBetween: {
+    alignItems: 'space-between';
   };
 
   Dimensions: {
@@ -106,12 +130,22 @@ export interface TypeConstants {
     };
     sections: {
       default: {
-        background: string;
+        backgroundColor: string;
+        color: string;
       };
-      musicControl: {
+      selected: {
+        backgroundColor: string;
+        color: string;
+      };
+      unselected: {
+        backgroundColor: string;
+        color: string;
+      };
+      networkcontrol: {
         icons: {
           play: string;
           wards: string;
+          forward: string;
         };
       };
     };

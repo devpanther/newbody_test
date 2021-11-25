@@ -25,8 +25,32 @@ class Constants {
     },
   };
 
+  readonly Row: TypeConstants['Row'] = {
+    display: 'flex',
+  };
+
+  readonly JustifyContentCenter: TypeConstants['JustifyContentCenter'] = {
+    justifyContent: 'center',
+  };
+
+  readonly JustifyContentBetween: TypeConstants['JustifyContentBetween'] = {
+    justifyContent: 'space-between',
+  };
+
+  readonly JustifyContentAround: TypeConstants['JustifyContentAround'] = {
+    justifyContent: 'space-around',
+  };
+
+  readonly AlignItemsCenter: TypeConstants['AlignItemsCenter'] = {
+    alignItems: 'center',
+  };
+
+  readonly AlignItemsBetween: TypeConstants['AlignItemsBetween'] = {
+    alignItems: 'space-between',
+  };
+
   readonly Borders: TypeConstants['Borders'] = {
-    radius: 16,
+    radius: 12,
     circle: 100,
   };
 
@@ -35,13 +59,13 @@ class Constants {
       default: 0.06 * this.Dimensions.screenWidth,
       rounded: 0.048 * this.Dimensions.screenWidth,
       squared: 0.07 * this.Dimensions.screenWidth,
-      rectangled: 0.07 * this.Dimensions.screenWidth,
+      rectangled: 0.05 * this.Dimensions.screenWidth,
       custom: {
         bluetooth: 0.064 * this.Dimensions.screenWidth,
       },
       musicControlSection: {
         play: 0.08 * this.Dimensions.screenWidth,
-        wards: 0.055 * this.Dimensions.screenWidth,
+        wards: 0.045 * this.Dimensions.screenWidth,
       },
       sliderControl: 0.065 * this.Dimensions.screenWidth,
     },
@@ -62,17 +86,17 @@ class Constants {
     buttons: {
       default: {
         squared: {
-          disabledBackground: 'rgba(0, 0, 0, 0.7)',
+          disabledBackground: 'rgba(0, 0, 0, 0.2)',
           enabledBackground: 'rgba(255, 255, 255, 0.7)',
           disabledIcon: 'rgba(255, 255, 255, 0.8)',
           enabledIcon: '#027AFF',
         },
         rectangled: {
-          disabledBackground: 'rgba(0, 0, 0, 0.7)',
-          enabledBackground: 'rgba(255, 255, 255, 0.7)',
-          disabledIcon: 'rgba(255, 255, 255, 0.8)',
+          disabledBackground: 'rgba(255, 255, 255, 0.3)',
+          enabledBackground: 'rgba(0, 0, 0, 0.7)',
+          disabledIcon: 'rgba(0, 0, 0, 0.8)',
           enabledIcon: '#027AFF',
-          disabledText: 'rgba(255, 255, 255, 0.8)',
+          disabledText: 'rgba(0, 0, 0, 0.8)',
           enabledText: 'rgba(0, 0, 0, 1)',
         },
         rounded: {
@@ -101,12 +125,22 @@ class Constants {
     },
     sections: {
       default: {
-        background: 'rgba(0, 0, 0, 0.7)',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        color: 'rgba(0, 0, 0, 0.7)',
       },
-      musicControl: {
+      selected: {
+        backgroundColor: 'rgba(10,132,255,1)',
+        color: 'rgba(255, 255, 255, 1)',
+      },
+      unselected: {
+        backgroundColor: 'rgba(255, 255, 255, 0.4)',
+        color: 'rgba(0, 0, 0, 0.6)',
+      },
+      networkcontrol: {
         icons: {
           play: 'rgba(255, 255, 255, 1)',
           wards: 'rgba(255, 255, 255, 0.5)',
+          forward: 'rgba(0, 0, 0, 0.3)',
         },
       },
     },
